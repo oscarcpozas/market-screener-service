@@ -2,7 +2,7 @@ serve:
 	uv run fastapi dev src/app.py
 
 worker:
-	uv run celery -A src.worker worker --loglevel=info
+	uv run celery -A src.core.worker worker --loglevel=info
 
 beat:
 	uv run celery -A src.worker beat --loglevel=info

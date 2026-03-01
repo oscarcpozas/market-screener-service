@@ -73,6 +73,7 @@ Examples:
 
 - Inside src/ exists folders by context (DDD style)
 - Every context follows hexagonal architecture for responsability separation
+- compose.yml contains all the services needed to run the project
 
 ## Important rules for Code Style
 
