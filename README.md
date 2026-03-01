@@ -1,36 +1,49 @@
-# Crypto Market Screener
+![](resources/banner.webp)
 
-A FastAPI-based cryptocurrency market screening application.
+This project aims to provide an example of FastAPI application writter in Python
 
-## Requirements
+---
 
-- Python 3.12.12
-- [uv](https://docs.astral.sh/uv) package manager
+# Development
 
-## Set up
+### Start project dependencies
 
-This project uses [uv](https://docs.astral.sh/uv) as a package/project manager. uv will automatically resolve and lock the project dependencies (i.e., create a uv.lock alongside the pyproject.toml), create a virtual environment, and run commands in that environment.
+Check [compose.yml](compose.yml) file
 
-## Development
+```shell
+docker compose up -d
+```
 
-### Run the development server
+### Run project
 
-```bash
+This project uses uv dependency manager, so dependencies are installed automatically on first run.
+
+**Start the development server:**
+
+```shell
 make serve
 ```
 
-This starts the FastAPI development server with hot-reload enabled.
+**Start celery worker:**
+
+```shell
+make worker 
+```
+
+**Start celery beat:**
+
+```shell
+make beat
+```
 
 ### Linting
 
-```bash
+```shell
 make lint
 ```
 
-Runs [Ruff](https://docs.astral.sh/ruff/) to check the source code for issues.
+### Run tests
 
-## API
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/`      | GET    | Root endpoint |
+```shell
+make test
+```
