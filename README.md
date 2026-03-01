@@ -1,6 +1,6 @@
 ![](resources/banner.webp)
 
-<p align="center"><b>This project aims to provide an example of FastAPI application writter in Python</b></p>
+<p align="center"><b>An example FastAPI application built with Python</b></p>
 
 ---
 
