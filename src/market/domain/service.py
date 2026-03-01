@@ -6,7 +6,7 @@ import httpx
 from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
-from src.database import async_session
+from src.core.database import async_session
 from src.market.client import fetch_ohlc_bars
 from src.market.constants import (
     INITIAL_LOOKBACK_DAYS,
@@ -14,9 +14,9 @@ from src.market.constants import (
     PAUSE_BETWEEN_TICKERS,
     TICKERS,
 )
-from src.market.models import OHLCBar
-from src.market.repository import OHLCRepository
-from src.market.schemas import AssetDetails
+from src.market.domain.models import OHLCBar
+from src.market.domain.repository import OHLCRepository
+from src.market.infra.schemas import AssetDetails
 
 logger = logging.getLogger(__name__)
 

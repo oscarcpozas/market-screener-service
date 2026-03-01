@@ -16,9 +16,12 @@ class Settings(BaseSettings):
         env_ignore_empty=True,
     )
 
-    project_name: str
-    database_url: str
+    project_name: str | None = None
+    database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/main"
+    redis_url: str = "redis://localhost:6379/0"
+
     massive_api_key: str | None = None
+    massive_base_url: str = "https://api.massive.ai"
 
 
 @lru_cache

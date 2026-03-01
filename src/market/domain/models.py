@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import BigInteger, DateTime, Float, Index, Integer, String, UniqueConstraint, text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from src.database import Base
+from src.core.database import Base
 
 
 class OHLCBar(Base):

@@ -1,5 +1,3 @@
-BASE_URL = "https://api.massive.com"
-
 TICKERS = [
     "X:BTCUSD",
     "X:ETHUSD",
@@ -22,7 +20,7 @@ LIMIT = 50_000
 INITIAL_LOOKBACK_DAYS = 30
 
 # Scheduler interval (seconds)
-SYNC_INTERVAL_SECONDS = 600
+SYNC_INTERVAL_SECONDS = 90
 
 # Rate-limit pause between tickers (seconds) — respects 5 req/min free tier
 PAUSE_BETWEEN_TICKERS = 13

@@ -3,7 +3,7 @@ import logging
 import httpx
 
 from src.config import get_settings
-from src.market.constants import BASE_URL, LIMIT, MULTIPLIER, TIMESPAN
+from src.market.constants import LIMIT, MULTIPLIER, TIMESPAN
 
 logger = logging.getLogger(__name__)
 
@@ -14,14 +14,17 @@ async def fetch_ohlc_bars(
     to_ts: str,
     http_client: httpx.AsyncClient,
 ) -> list[dict]:
-    """Fetch OHLC bars from Massive API, following pagination if present."""
+    massive_base_url = get_settings().massive_base_url
+    if not massive_base_url:
+        raise RuntimeError("MASSIVE_BASE_URL is required for market data sync")
+
     api_key = get_settings().massive_api_key
     if not api_key:
         raise RuntimeError("MASSIVE_API_KEY is required for market data sync")
 
     all_results: list[dict] = []
     url: str | None = (
-        f"{BASE_URL}/v2/aggs/ticker/{ticker}/range/{MULTIPLIER}/{TIMESPAN}"
+        f"{massive_base_url}/v2/aggs/ticker/{ticker}/range/{MULTIPLIER}/{TIMESPAN}"
         f"/{from_ts}/{to_ts}"
     )
     params: dict | None = {

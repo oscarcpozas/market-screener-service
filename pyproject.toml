@@ -6,6 +6,7 @@ requires-python = "==3.12.12"
 # Prefer ~= (compat) over >= (floor). Only pin exact versions (==) when necessary.
 dependencies = [
     "asyncpg~=0.30",
+    "celery[redis]~=5.4",
     "fastapi[standard]~=0.128.0",
     "pydantic-settings~=2.7",
     "sqlalchemy[asyncio]~=2.0",
@@ -24,3 +25,4 @@ test = [
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"

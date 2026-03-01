@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 
 from src.market.constants import TICKERS
-from src.market.repository import OHLCRepository, get_ohlc_repository
-from src.market.schemas import AssetDetails, OHLCBarOut, TickerStatus
-from src.market.service import get_asset_details
+from src.market.domain.repository import OHLCRepository
+from src.market.infra.repository_impl import get_ohlc_repository
+from src.market.infra.schemas import AssetDetails, OHLCBarOut, TickerStatus
+from src.market.domain.service import get_asset_details
 
 router = APIRouter(prefix="/market", tags=["market"])
 
@@ -15,8 +16,8 @@ async def list_tickers() -> list[str]:
 
 @router.get("/bars/{ticker:path}", response_model=list[OHLCBarOut])
 async def get_bars(
-    ticker: str,
-    limit: int = Query(default=100, ge=1, le=5000),
+        ticker: str,
+        limit: int = Query(default=100, ge=1, le=5000),
         repo: OHLCRepository = Depends(get_ohlc_repository),
 ) -> list[OHLCBarOut]:
     bars = await repo.get_bars(ticker, limit)
