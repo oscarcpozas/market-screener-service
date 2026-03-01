@@ -5,10 +5,10 @@ worker:
 	uv run celery -A src.core.worker worker --loglevel=info
 
 beat:
-	uv run celery -A src.worker beat --loglevel=info
+	uv run celery -A src.core.worker beat --loglevel=info
 
 lint:
-	uv run ruff check src/
+	uv run --group lint ruff check src/
 
 test:
 	APP_ENV=test uv run --group test pytest tests/ -v
